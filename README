@@ -63,7 +63,7 @@ Testing your routes is also pretty simple, below is an example using Mspec (Mach
     {
         Establish context = () =>
         {
-            theExpectedRouteUrl = "test/get/route";
+            theExpectedRouteUrl = "all/routes/are/mine";
             theExpectedActionName = "Index";
             theExpectedControllerName = "Test";
         };
