@@ -4,7 +4,7 @@ using Machine.Specifications;
 
 namespace Mvc.Routing.Specs.delete
 {
-    [Subject(typeof(GetAttribute), "Given a controller action marked as Get")]
+    [Subject(typeof(GetAttribute), "Given a controller action marked as Delete")]
     public class when_registering_routes : register_route_context
     {
         Establish context = () =>

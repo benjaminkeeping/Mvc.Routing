@@ -55,3 +55,27 @@ public class FooController : Controller
 		// whatever
 	}	
 }
+
+Testing your routes is also pretty simple, below is an example using Mspec (Machine.Specifications) :
+
+    [Subject(typeof(GetAttribute), "Given a test controller has marked the Index method as Get")]
+    public class when_registering_routes : register_route_context
+    {
+        Establish context = () =>
+        {
+            theExpectedRouteUrl = "test/get/route";
+            theExpectedActionName = "Index";
+            theExpectedControllerName = "Test";
+        };
+
+        Because of = () =>
+        {
+            Routing.Register(typeof(TestController).Assembly);
+            theRoute =
+                RouteTable.Routes.Select(x => x as Route).Where(x => x.Url == theExpectedRouteUrl).FirstOrDefault();
+        };
+
+        Behaves_like<route_should_be_registered> route_should_be_registered;
+    }
+
+    See the project specs here for more examples : https://github.com/benjaminkeeping/Mvc.Routing/tree/master/src/Mvc.Routing.Specs/registration

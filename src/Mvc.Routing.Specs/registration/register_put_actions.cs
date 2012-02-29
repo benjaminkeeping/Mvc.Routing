@@ -4,7 +4,7 @@ using Machine.Specifications;
 
 namespace Mvc.Routing.Specs.put
 {
-    [Subject(typeof(GetAttribute), "Given a controller action marked as Get")]
+    [Subject(typeof(GetAttribute), "Given a controller action marked as Put")]
     public class when_registering_routes : register_route_context
     {
         Establish context = () =>
