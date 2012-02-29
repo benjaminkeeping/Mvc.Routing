@@ -58,7 +58,7 @@ public class FooController : Controller
 
 Testing your routes is also pretty simple, below is an example using Mspec (Machine.Specifications) :
 
-    [Subject(typeof(GetAttribute), "Given a test controller has marked the Index method as Get")]
+    [Subject(typeof(TestController), "Given a test controller has marked the Index method as Get")]
     public class when_registering_routes : register_route_context
     {
         Establish context = () =>
