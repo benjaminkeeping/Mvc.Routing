@@ -3,24 +3,12 @@ using System.Web.Mvc;
 
 namespace Mvc.Routing
 {
-    public class GetAttribute : ActionMethodSelectorAttribute
+    public class GetAttribute : BaseRouteAttribute
     {
-        readonly string _route;
-
         public GetAttribute(string route)
+            : base(route, "get")
         {
-            _route = route;
         }
 
-        public string Route
-        {
-            get { return _route; }
-        }
-
-        public override bool IsValidForRequest(ControllerContext controllerContext, MethodInfo methodInfo)
-        {
-            if (controllerContext.RequestContext.HttpContext.Request.HttpMethod.ToLower() == "get") return true;
-            return false;
-        }
     }
 }

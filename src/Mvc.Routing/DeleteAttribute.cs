@@ -3,24 +3,11 @@ using System.Web.Mvc;
 
 namespace Mvc.Routing
 {
-    public class DeleteAttribute : ActionMethodSelectorAttribute
+    public class DeleteAttribute : BaseRouteAttribute
     {
-        readonly string _route;
-
         public DeleteAttribute(string route)
+            : base(route, "delete")
         {
-            _route = route;
-        }
-
-        public string Route
-        {
-            get { return _route; }
-        }
-
-        public override bool IsValidForRequest(ControllerContext controllerContext, MethodInfo methodInfo)
-        {
-            if (controllerContext.RequestContext.HttpContext.Request.HttpMethod.ToLower() == "delete") return true;
-            return false;
         }
     }
 }

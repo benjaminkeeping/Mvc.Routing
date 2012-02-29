@@ -3,24 +3,11 @@ using System.Web.Mvc;
 
 namespace Mvc.Routing
 {
-    public class PostAttribute : ActionMethodSelectorAttribute
+    public class PostAttribute : BaseRouteAttribute
     {
-        readonly string _route;
-
         public PostAttribute(string route)
+            : base(route, "post")
         {
-            _route = route;
-        }
-
-        public string Route
-        {
-            get { return _route; }
-        }
-
-        public override bool IsValidForRequest(ControllerContext controllerContext, MethodInfo methodInfo)
-        {
-            if (controllerContext.RequestContext.HttpContext.Request.HttpMethod.ToLower() == "post") return true;
-            return false;
         }
     }
 }

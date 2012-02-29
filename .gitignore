@@ -5,3 +5,5 @@ src/Mvc.Routing.suo
 build/build_log.txt
 build/lib
 deploy
+src/Mvc.Routing.Specs/bin
+src/Mvc.Routing.Specs/obj
