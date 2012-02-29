@@ -38,7 +38,7 @@ namespace Mvc.Routing
                 var customAttributes = methodInfo.GetCustomAttributes(true);
                 routeInfo.AddRange(from customAttribute in customAttributes where IsOurAttribute(customAttribute) select new RouteInfo(controllerType, methodInfo.Name, GetRouteFrom(customAttribute)));
             }
-            return routeInfo;
+            return routeInfo.OrderByDescending(x => x.Route);
         }
 
         static string GetRouteFrom(object customAttribute)
