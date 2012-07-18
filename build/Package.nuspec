@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Mvc.Routing</id>
-    <version>1.0.0.3</version>
+    <version>1.0.0.4</version>
     <authors>Ben Keeping</authors>
     <owners>Ben Keeping</owners>
     <projectUrl>https://github.com/benjaminkeeping/Mvc.Routing</projectUrl>

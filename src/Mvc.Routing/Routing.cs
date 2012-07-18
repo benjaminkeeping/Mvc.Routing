@@ -14,9 +14,23 @@ namespace Mvc.Routing
             Register(new [] { controllerAssembly});
         }
 
+        public static IEnumerable<RouteInfo> GetRoutes(Assembly controllerAssembly)
+        {
+            return
+                GetControllersThatWantRouting(new[] { controllerAssembly }).Select(GetRouteInfoFor).SelectMany(
+                    routeInfo => routeInfo);
+        }
+        
+        public static IEnumerable<RouteInfo> GetRoutes(Assembly[] controllerAssemblies)
+        {
+            return
+                GetControllersThatWantRouting(controllerAssemblies).Select(GetRouteInfoFor).SelectMany(
+                    routeInfo => routeInfo);
+        } 
+
         public static void Register(Assembly[] controllerAssemblies)
         {
-            foreach (var route in GetControllersThatWantRouting(controllerAssemblies).Select(GetRouteInfoFor).SelectMany(routeInfo => routeInfo))
+            foreach (var route in GetRoutes(controllerAssemblies))
             {
                 if (RouteTable.Routes[route.GetRouteName()] == null)
                     RouteTable.Routes.MapRoute(route.GetRouteName(), route.Route,
