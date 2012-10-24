@@ -54,6 +54,7 @@
     <Compile Include="PutAttribute.cs" />
     <Compile Include="RouteAttribute.cs" />
     <Compile Include="RouteInfo.cs" />
+    <Compile Include="RouteInfoFactory.cs" />
     <Compile Include="Routing.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

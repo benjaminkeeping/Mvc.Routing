@@ -6,7 +6,12 @@ namespace Mvc.Routing
     public class PostAttribute : BaseRouteAttribute
     {
         public PostAttribute(string route)
-            : base(route, "post")
+            : base(route, "", "post")
+        {
+        }
+
+        public PostAttribute(string route, string description)
+            : base(route, description, "get")
         {
         }
     }

@@ -6,7 +6,12 @@ namespace Mvc.Routing
     public class DeleteAttribute : BaseRouteAttribute
     {
         public DeleteAttribute(string route)
-            : base(route, "delete")
+            : base(route, "", "delete")
+        {
+        }        
+        
+        public DeleteAttribute(string route, string description)
+            : base(route, description, "get")
         {
         }
     }

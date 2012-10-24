@@ -49,25 +49,12 @@ namespace Mvc.Routing
             var methods = controllerType.GetMethods();
             foreach (var methodInfo in methods)
             {
-                var customAttributes = methodInfo.GetCustomAttributes(true);
-                routeInfo.AddRange(from customAttribute in customAttributes where IsOurAttribute(customAttribute) select new RouteInfo(controllerType, methodInfo.Name, GetRouteFrom(customAttribute)));
+                var customAttributes = methodInfo.GetCustomAttributes(true).Where(IsOurAttribute);
+                routeInfo.AddRange(customAttributes.Select(customAttribute => RouteInfoFactory.CreateFrom(controllerType, methodInfo.Name, customAttribute)));
             }
             return routeInfo.OrderByDescending(x => x.Route);
         }
 
-        static string GetRouteFrom(object customAttribute)
-        {
-            var attr = (customAttribute as BaseRouteAttribute);
-            if (attr != null)
-            {
-                return attr.Route;
-            }  
-            if (customAttribute.GetType() == typeof(RouteAttribute))
-            {
-                return (customAttribute as RouteAttribute).Route;
-            }
-            throw new ArgumentException(string.Format("Type {0} is not one of our types", customAttribute.GetType()));
-        }
 
         static bool IsOurAttribute(object customAttribute)
         {

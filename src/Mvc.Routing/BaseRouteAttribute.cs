@@ -6,6 +6,7 @@ namespace Mvc.Routing
     public class BaseRouteAttribute : ActionMethodSelectorAttribute
     {
         readonly string _route;
+        private readonly string _description;
         readonly string _httpMethod;
 
         protected BaseRouteAttribute(string route)
@@ -13,10 +14,17 @@ namespace Mvc.Routing
             _route = route;
         }
 
-        protected BaseRouteAttribute(string route, string httpMethod)
+        protected BaseRouteAttribute(string route, string description, string httpMethod)
         {
             _route = route;
+            _description = description;
             _httpMethod = httpMethod;
+        }
+
+
+        public string Description
+        {
+            get { return _description; }
         }
 
         public string HttpMethod
